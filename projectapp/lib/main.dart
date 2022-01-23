@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projectapp/http.dart';
 import 'package:projectapp/imagescreen.dart';
-import 'package:projectapp/secondaryscreen.dart';
 
 import 'data.dart';
-import 'http.dart';
 
 //Davide Castelletto 13/12/2021
 

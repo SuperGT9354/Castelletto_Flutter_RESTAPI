@@ -8,23 +8,6 @@ import 'data.dart';
 
 List<Data> character = [];
 
-Future<Data> fetchData() async {
-  for (int i = 1; i < 11; i++) {
-    http.Response response = await http.get(
-        Uri.parse('https://rickandmortyapi.com/api/character/' + i.toString()));
-
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      return Data.fromJson(jsonDecode(response.body));
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load character');
-    }
-  }
-}
-
 class Http extends StatefulWidget {
   final int character;
 
@@ -37,6 +20,21 @@ class Http extends StatefulWidget {
 
 class _HttpState extends State<Http> {
   final int character;
+
+  Future<Data> fetchData() async {
+    http.Response response = await http.get(Uri.parse(
+        'https://rickandmortyapi.com/api/character/' + character.toString()));
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return Data.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load character');
+    }
+  }
 
   _HttpState(this.character);
 
