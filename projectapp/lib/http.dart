@@ -125,33 +125,37 @@ class _ImageshowState extends State<Imageshow> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: FutureBuilder<Data>(
-            future: futureData,
-            builder: (context, snapshot) {
-              String _stampa = (snapshot.data!.name);
-              if (snapshot.hasData) {
-                return Container(
-                    child: Column(children: <Widget>[
-                  const Padding(padding: EdgeInsets.only(top: 20.0)),
-                  SizedBox(
-                      height: 140,
-                      width: 140,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(25.0),
-                        child: Image.network(snapshot.data!.image),
-                      )),
-                  const Padding(padding: EdgeInsets.only(top: 10.0)),
-                  Container(
-                    child: Text(_stampa, style: const TextStyle(fontSize: 15)),
-                  )
-                ]));
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
+    return Scaffold(
+        children: Column(
+      children: Container(
+          child: FutureBuilder<Data>(
+              future: futureData,
+              builder: (context, snapshot) {
+                String _stampa = (snapshot.data!.name);
+                if (snapshot.hasData) {
+                  return Container(
+                      child: Column(children: <Widget>[
+                    const Padding(padding: EdgeInsets.only(top: 20.0)),
+                    SizedBox(
+                        height: 140,
+                        width: 140,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25.0),
+                          child: Image.network(snapshot.data!.image),
+                        )),
+                    const Padding(padding: EdgeInsets.only(top: 10.0)),
+                    Container(
+                      child:
+                          Text(_stampa, style: const TextStyle(fontSize: 15)),
+                    )
+                  ]));
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
 
-              // By default, show a loading spinner.
-              return CircularProgressIndicator();
-            }));
+                // By default, show a loading spinner.
+                return CircularProgressIndicator();
+              })),
+    ));
   }
 }
