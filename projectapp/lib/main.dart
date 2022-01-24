@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/imagescreen.dart';
 
-import 'data.dart';
-
-//Davide Castelletto 13/12/2021
+//Davide Castelletto 24/01/2022
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Duce Home Page'),
+      home: MyHomePage(title: 'RickAPI'),
     );
   }
 }
@@ -53,14 +51,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late Future<Data> futureData;
-
-  @override
-  /*void initState() {
-    super.initState();
-    futureData = fetchData();
-  }*/
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -70,13 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-        /*appBar: AppBar(
+      /*appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),*/
-        body: Imagescreen(images: List.generate(20, (i) => i + 1))
-        /*Center(
+      body: Center(child: Imagescreen(images: List.generate(4, (i) => i))),
+      /*Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: SingleChildScrollView(
@@ -98,6 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: )),
       ),*/
-        );
+    );
   }
 }

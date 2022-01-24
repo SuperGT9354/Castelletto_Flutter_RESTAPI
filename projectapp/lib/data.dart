@@ -1,3 +1,6 @@
+//Davide Castelletto 24/01/2022
+
+//classe che contiene i dati ottenuti dall'API
 class Data {
   final int id;
   final String name;
