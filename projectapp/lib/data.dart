@@ -20,6 +20,7 @@ class Data {
     required this.image,
   });
 
+  //funzione che permette la conversione dei dati contenuti nel file json in valori interni all'applicazione
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
       id: json['id'],
